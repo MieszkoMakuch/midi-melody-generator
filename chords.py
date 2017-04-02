@@ -62,13 +62,13 @@ class Chords:
     vii = dim7 = Chord("B   D'' F  ", name="vii")
 
     # Minor key
-    I_min_key   = Chord("C   D#   G  ", name="I_min_key")
+    I_min_key   = Chord("C   D#  G  ", name="I_min_key")
     ii_min_key  = Chord("D   F   G#  ", name="ii_min_key")
-    iii_min_key = Chord("D#   G   A#  ", name="iii_min_key")
-    IV_min_key  = Chord("F   G#   C''", name="IV_min_key")
-    V_min_key   = Chord("G   A#   D''", name="V_min_key")
-    vi_min_key  = Chord("G#   C'' D#  ", name="vi_min_key")
-    vii_min_key = Chord("A#   D'' F  ", name="vii_min_key")
+    iii_min_key = Chord("D#  G   A#  ", name="iii_min_key")
+    IV_min_key  = Chord("F   G#  C''", name="IV_min_key")
+    V_min_key   = Chord("G   A#  D''", name="V_min_key")
+    vi_min_key  = Chord("G#  C'' D#  ", name="vi_min_key")
+    vii_min_key = Chord("A#  D'' F  ", name="vii_min_key")
 
     major_scale = [I, I.inversion(), I.inversion().inversion(), I.octave_shift(1), I.octave_shift(-1),
                    ii, iii, IV, V, vi]  # happy
