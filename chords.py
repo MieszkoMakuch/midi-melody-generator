@@ -2,7 +2,7 @@ import collections
 import copy
 import random
 
-from MIDIMelody import MIDIMelody
+from melody_properties import MelodyProperties
 from pyknon.music import NoteSeq, Note, Rest
 
 
@@ -88,8 +88,8 @@ class Chords:
 class ChordSeq(collections.MutableSequence):
     def __init__(self, mood=None, chords=None):
         if mood is None:
-            self.mood = random.choice(list(MIDIMelody.Moods))
-        elif isinstance(mood, MIDIMelody.Moods):
+            self.mood = random.choice(list(MelodyProperties.Moods))
+        elif isinstance(mood, MelodyProperties.Moods):
             self.mood = mood
         else:
             raise AttributeError("ChordSeq doesn't accept this type of data.")
@@ -139,9 +139,9 @@ class ChordSeq(collections.MutableSequence):
         return "<ChordSeq: [{0}]>".format(string)
 
     def _generate_chord_progression(self):
-        if self.mood == MIDIMelody.Moods.HAPPY:
+        if self.mood == MelodyProperties.Moods.HAPPY:
             chord_scale = Chords.major_scale
-        elif self.mood == MIDIMelody.Moods.SAD:
+        elif self.mood == MelodyProperties.Moods.SAD:
             chord_scale = Chords.minor_scale
         else:
             chord_scale = Chords.mixed_scale

@@ -2,7 +2,7 @@
 import random
 from enum import Enum
 
-from MIDIMelody import MIDIMelody
+from melody_properties import MelodyProperties
 from chords import Chord, Chords, ChordSeq
 from pyknon import genmidi
 from pyknon.music import NoteSeq
@@ -160,19 +160,19 @@ class RhythmGenerator:
 class MelodyGenerator:
     def __init__(self, mood=None, speed=None, instrument=None, file_dest=None):
         if mood is None:
-            self.mood = MIDIMelody.Moods.HAPPY
+            self.mood = MelodyProperties.Moods.HAPPY
         else:
-            self.mood = MIDIMelody.Moods[mood]
+            self.mood = MelodyProperties.Moods[mood]
 
         if speed is None:
-            self.speed = MIDIMelody.Speeds.MEDIUM
+            self.speed = MelodyProperties.Speeds.MEDIUM
         else:
-            self.speed = MIDIMelody.Speeds[speed]
+            self.speed = MelodyProperties.Speeds[speed]
 
         if instrument is None:
             self.instrument = random.choice([1, 3])
         else:
-            self.instrument = MIDIMelody.Instruments[instrument]
+            self.instrument = MelodyProperties.Instruments[instrument]
 
         if file_dest is None:
             self.file_dest = "midi/melodyMG.mid"
@@ -181,7 +181,7 @@ class MelodyGenerator:
 
     def generate_midi_melody(self):
         midi = genmidi.Midi(1, tempo=self.speed.value, instrument=self.instrument)
-        print("Instrument: " + MIDIMelody.Instruments(self.instrument).name)
+        print("Instrument: " + MelodyProperties.Instruments(self.instrument).name)
 
         octave_shift = -1
         chord_seq = ChordSeq(mood=self.mood).octave_shift(octave_shift).__mul__(2)

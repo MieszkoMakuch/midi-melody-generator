@@ -1,7 +1,7 @@
 from enum import Enum, IntEnum
 
 
-class MIDIMelody:
+class MelodyProperties:
     """Melody which will be generated"""
 
     class Moods(Enum):
