@@ -6,3 +6,5 @@ if __name__ == '__main__':
     melody_generator = MelodyGenerator(file_dest=args.file_dest, mood=args.mood,
                                        speed=args.speed, instrument=args.instrumentName)
     melody_generator.generate_midi_melody()
+
+# TODO - parametrize: octave_shift, melody length
