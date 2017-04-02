@@ -1,6 +1,8 @@
 import argparse
-from melody_generator import MelodyGenerator
+
 from MIDIMelody import MIDIMelody
+from melody_generator import MelodyGenerator
+
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Generate narcotic MIDI melody")

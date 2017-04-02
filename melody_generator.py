@@ -2,8 +2,8 @@
 import random
 from enum import Enum
 
-from chords import Chord, Chords, ChordSeq
 from MIDIMelody import MIDIMelody
+from chords import Chord, Chords, ChordSeq
 from pyknon import genmidi
 from pyknon.music import NoteSeq
 

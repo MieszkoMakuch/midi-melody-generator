@@ -1,5 +1,4 @@
 import re
-from fractions import Fraction
 
 REGEX_NOTE = re.compile("([a-gA-GRr])([b#]*)([0-9]*)([.]*)([',]*)")
 
@@ -52,14 +51,14 @@ def parse_note(note, volume=120, prev_octave=5, prev_dur=0.25):
     else:
         pitch_number = note_names.index(pitch.lower())
         acc_number = parse_accidental(acc)
-        note_number =  (pitch_number + acc_number) % 12
+        note_number = (pitch_number + acc_number) % 12
         return note_number, octave, duration, volume
 
 
 def parse_notes(notes, volume=120):
-    prev_oct = 5        # default octave=5
-    prev_dur = 1        # default duration is 1/4, but it's 1 in the MIDI library
-    #10 - 22 sek, 5 - 12sek, 2.5 - 6sek, 1 - 2.5 sek
+    prev_oct = 5  # default octave=5
+    prev_dur = 1  # default duration is 1/4, but it's 1 in the MIDI library
+    # 10 - 22 sek, 5 - 12sek, 2.5 - 6sek, 1 - 2.5 sek
 
     result = []
     for item in notes:

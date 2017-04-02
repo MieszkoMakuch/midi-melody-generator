@@ -1,6 +1,7 @@
 import collections
 import copy
 import random
+
 from MIDIMelody import MIDIMelody
 from pyknon.music import NoteSeq, Note, Rest
 

@@ -34,7 +34,8 @@ class Midi(object):
                     self.midi_data.addNote(track, 0, note.midi_number, time, dur, volume)
                 time += dur
             else:
-                raise MidiError("The input should be a list of NoteSeq but yours is a {0}: {1}".format(type(seqlist), seqlist))
+                raise MidiError(
+                    "The input should be a list of NoteSeq but yours is a {0}: {1}".format(type(seqlist), seqlist))
         return time
 
     def seq_notes(self, noteseq, track=0, time=0):

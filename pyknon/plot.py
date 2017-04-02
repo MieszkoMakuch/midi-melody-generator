@@ -1,9 +1,8 @@
-import math
-from pyknon.simplemusic import inversion
 import Tkinter as Tk
-
+import math
 
 MARGIN = 30
+
 
 def x_y_points(tick, number_points, radius):
     angle = tick * (360.0 / number_points)
@@ -33,7 +32,7 @@ def plot_points(canvas, points):
 
 def plot_numbers(canvas, points):
     for n, (x, y) in enumerate(points):
-        canvas.create_text(x, y-10, text=str(n), font=("Helvetica Bold", 14))
+        canvas.create_text(x, y - 10, text=str(n), font=("Helvetica Bold", 14))
 
 
 def plot_notes(notes, canvas, points, color="black"):

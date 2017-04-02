@@ -7,8 +7,9 @@ generate actual music you should use the music module.
 """
 
 from __future__ import division
-from itertools import combinations, chain
+
 from fractions import Fraction
+from itertools import combinations, chain
 
 
 def mod12(n):
@@ -24,7 +25,7 @@ def interval_class(x, y):
 
 
 def intervals(notes):
-    return [interval_class(y, x) for x,y in zip(notes, rotate(notes)[:-1])]
+    return [interval_class(y, x) for x, y in zip(notes, rotate(notes)[:-1])]
 
 
 def all_intervals(notes):

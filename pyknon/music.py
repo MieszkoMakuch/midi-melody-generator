@@ -1,5 +1,6 @@
 import collections
 import copy
+
 from pyknon import notation
 
 
@@ -95,7 +96,7 @@ class Note(object):
 
     def harmonize(self, scale, interval=3, size=3):
         i = (interval - 1)
-        indices = range(1, size*i, i)
+        indices = range(1, size * i, i)
         return [self.tonal_transposition(x, scale) for x in indices]
 
     def octave_shift(self, octaves):
