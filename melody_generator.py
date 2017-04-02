@@ -2,8 +2,8 @@
 import random
 from enum import Enum
 
-from melody_properties import MelodyProperties
 from chords import Chord, Chords, ChordSeq
+from melody_properties import MelodyProperties
 from pyknon import genmidi
 from pyknon.music import NoteSeq
 
@@ -49,7 +49,6 @@ class RhythmGenerator:
             rhythm = random.choice(self.rhythms_right)
         return rhythm
 
-    # def generate_rhythm(self):
     def rhythm_4_40_left(self, chord: Chord) -> [Chord]:
         first_note = Chord([chord.first_note.octave_shift(-1)])
         left_hand_seq = []
@@ -89,7 +88,6 @@ class RhythmGenerator:
         new_chord.append(chord.first_note.octave_shift(-1))
         new_chord.append(chord.first_note.octave_shift(-2))
 
-        # sum = 21
         rhythm.append(new_chord.stretch_dur(12 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(12 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(8 / self.subdivided))
@@ -99,7 +97,6 @@ class RhythmGenerator:
         rhythm = []
         new_chord = chord
 
-        # sum = 21
         rhythm.append(new_chord.stretch_dur(12 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(12 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(8 / self.subdivided))
@@ -107,7 +104,6 @@ class RhythmGenerator:
 
     def rhythm_heart_and_soul_left(self, chord: Chord) -> [NoteSeq]:
         first_note = Chord([chord.first_note.octave_shift(-1)])
-        silence = Chords.silence
         left_hand_seq = []
 
         left_hand_seq.append(first_note.stretch_dur(4 / self.subdivided))
@@ -121,7 +117,6 @@ class RhythmGenerator:
         new_chord = chord
         silence_chord = NoteSeq("R")
 
-        # sum = 11
         rhythm.append(silence_chord.stretch_dur(8 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(4 / self.subdivided))
         rhythm.append(new_chord.stretch_dur(4 / self.subdivided))
@@ -131,10 +126,8 @@ class RhythmGenerator:
 
         return rhythm
 
-    '''someone like you'''
-
     def rhythm_16th_note_pattern_right(self, chord: Chord) -> [NoteSeq]:
-        # works best with divide_by = 20
+        # works best with subdivided = 20
         chord = chord.stretch_dur(2 / self.subdivided)
         l1 = [NoteSeq([chord[0]])] + [NoteSeq([chord[1]])]
         l2 = [NoteSeq([chord[2]])] + [NoteSeq([chord[1]])]
