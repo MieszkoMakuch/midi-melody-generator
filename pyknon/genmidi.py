@@ -19,7 +19,6 @@ class Midi(object):
             self.midi_data.addTrackName(track, 0, "Track {0}".format(track))
             self.midi_data.addTempo(track, 0, tempo)
             instr = instrument[track] if isinstance(instrument, list) else instrument
-            instr -= 1
             self.midi_data.addProgramChange(track, 0, 0, instr)
 
     def seq_chords(self, seqlist, track=0, time=0):

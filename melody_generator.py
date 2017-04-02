@@ -158,32 +158,30 @@ class RhythmGenerator:
 
 
 class MelodyGenerator:
-    def __init__(self, mood=None, speed=None, instrument=None, file_dest="midi/melodyMG.mid"):
+    def __init__(self, mood=None, speed=None, instrument=None, file_dest=None):
         if mood is None:
             self.mood = MIDIMelody.Moods.HAPPY
-        elif isinstance(mood, MIDIMelody.Moods):
-            self.mood = mood
         else:
-            raise AttributeError("MelodyGenerator does not accept this type of mood")
+            self.mood = MIDIMelody.Moods[mood]
 
         if speed is None:
-            self.speed = MIDIMelody.Speeds.FAST
-        elif isinstance(speed, MIDIMelody.Speeds):
-            self.speed = speed
+            self.speed = MIDIMelody.Speeds.MEDIUM
         else:
-            raise AttributeError("MelodyGenerator does not accept this type of speed")
+            self.speed = MIDIMelody.Speeds[speed]
 
         if instrument is None:
             self.instrument = random.choice([1, 3])
-        elif 1 <= instrument <= 128:
-            self.instrument = instrument
         else:
-            raise AttributeError("MelodyGenerator does not accept this type of instrument")
+            self.instrument = MIDIMelody.Instruments[instrument]
 
-        self.file_dest = file_dest
+        if file_dest is None:
+            self.file_dest = "midi/melodyMG.mid"
+        else:
+            self.file_dest = file_dest
 
     def generate_midi_melody(self):
         midi = genmidi.Midi(1, tempo=self.speed.value, instrument=self.instrument)
+        print("Instrument: " + MIDIMelody.Instruments(self.instrument).name)
 
         octave_shift = -1
         chord_seq = ChordSeq(mood=self.mood).octave_shift(octave_shift).__mul__(2)
