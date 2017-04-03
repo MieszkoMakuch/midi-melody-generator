@@ -29,7 +29,7 @@ class MelodyGenerator:
             self.speed = MelodyProperties.Speeds[speed]
 
         if instrument is None:
-            self.instrument = random.choice([0, 3])
+            self.instrument = random.choice([0, 2, 3])
         else:
             self.instrument = MelodyProperties.Instruments[instrument]
 
