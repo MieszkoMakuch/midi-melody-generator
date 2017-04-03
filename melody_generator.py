@@ -55,15 +55,15 @@ class MelodyGenerator:
             self.multiply_length = multiply_length
 
         if chord_seq is None:
-            self.chord_seq = ChordSeq(mood=self.mood).octave_shift(self.octave_shift).__mul__(self.multiply_length)
+            self.chord_seq = ChordSeq(mood=self.mood).octave_shift(self.octave_shift)
         elif isinstance(chord_seq, ChordSeq):
             self.chord_seq = chord_seq
         else:
             raise AttributeError("MelodyGenerator does not accept this type of argument")
 
-        self.left_hand_rhythm = RhythmGenerator(self.chord_seq,
+        self.left_hand_rhythm = RhythmGenerator(self.chord_seq.__mul__(self.multiply_length),
                                                 RhythmGenerator.RhythmTypes.LEFT_HAND)
-        self.right_hand_rhythm = RhythmGenerator(self.chord_seq,
+        self.right_hand_rhythm = RhythmGenerator(self.chord_seq.__mul__(self.multiply_length),
                                                  RhythmGenerator.RhythmTypes.RIGHT_HAND)
 
     def generate_midi_melody(self):
