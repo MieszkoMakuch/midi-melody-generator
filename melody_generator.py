@@ -13,7 +13,8 @@ from pyknon.music import NoteSeq
 class MelodyGenerator:
     """Class responsible for generating melody (midi file)."""
 
-    def __init__(self, mood=None, speed=None, instrument=None, file_dest=None):
+    def __init__(self, mood=None, speed=None, instrument=None, file_dest=None,
+                 octave_shift=None, chord_seq=None, multiply_length=None):
         """All parameters are optional, if parameter is not specified
         it will be chosen randomly or by default"""
 
@@ -37,24 +38,49 @@ class MelodyGenerator:
         else:
             self.file_dest = file_dest
 
+        if octave_shift is None:
+            if self.mood == MelodyProperties.Moods.HAPPY:
+                octave_range = range(0, 2)
+            elif self.mood == MelodyProperties.Moods.SAD:
+                octave_range = range(-2, 1)
+            else:
+                octave_range = range(-1, 1)
+            self.octave_shift = random.choice(octave_range)
+        else:
+            self.octave_shift = octave_shift
+
+        if multiply_length is None:
+            self.multiply_length = 3
+        else:
+            self.multiply_length = multiply_length
+
+        if chord_seq is None:
+            self.chord_seq = ChordSeq(mood=self.mood).octave_shift(self.octave_shift).__mul__(self.multiply_length)
+        elif isinstance(chord_seq, ChordSeq):
+            self.chord_seq = chord_seq
+        else:
+            raise AttributeError("MelodyGenerator does not accept this type of argument")
+
+        self.left_hand_rhythm = RhythmGenerator(self.chord_seq,
+                                                RhythmGenerator.RhythmTypes.LEFT_HAND)
+        self.right_hand_rhythm = RhythmGenerator(self.chord_seq,
+                                                 RhythmGenerator.RhythmTypes.RIGHT_HAND)
+
     def generate_midi_melody(self):
         """Generates melody based on given parameters"""
-
-        print("Mood: " + MelodyProperties.Moods(self.mood).name)
         midi = genmidi.Midi(1, tempo=self.speed.value, instrument=self.instrument)
-        print("Instrument: " + MelodyProperties.Instruments(self.instrument).name)
-
-        octave_shift = -1
-        chord_seq = ChordSeq(mood=self.mood).octave_shift(octave_shift).__mul__(2)
-        print("Chord sequence: " + chord_seq.verbose)
-
-        right_hand_seq = RhythmGenerator(chord_seq, RhythmGenerator.RhythmTypes.RIGHT_HAND).generate_note_seq()
-        left_hand_seq = RhythmGenerator(chord_seq, RhythmGenerator.RhythmTypes.LEFT_HAND).generate_note_seq()
-
-        midi.seq_chords(right_hand_seq)
-        midi.seq_chords(left_hand_seq)
+        midi.seq_chords(self.right_hand_rhythm.generate_note_seq())
+        midi.seq_chords(self.left_hand_rhythm.generate_note_seq())
         midi.write(self.file_dest)
-        print("Melody generated")
+
+    def print_properties(self):
+        print("Mood: \t\t\t\t%s" % MelodyProperties.Moods(self.mood).name)
+        print("Octave shift: \t\t%i" % self.octave_shift)
+        print("Length multiply: \t%i" % self.multiply_length)
+        print("Instrument: \t\t%s" % MelodyProperties.Instruments(self.instrument).name)
+        print("Left hand rhythm: \t%s" % self.left_hand_rhythm.rhythm_pattern.__name__)
+        print("Left hand rhythm: \t%s" % self.right_hand_rhythm.rhythm_pattern.__name__)
+        print("Chord sequence: \t%s" % self.chord_seq.verbose)
 
 
 class RhythmGenerator:
@@ -80,10 +106,8 @@ class RhythmGenerator:
 
         if rhythm_type == self.RhythmTypes.LEFT_HAND:
             self.rhythm_pattern = random.choice(self.rhythms_left)
-            print("Chosen rhythm: " + self.rhythm_pattern.__name__)
         elif rhythm_type == self.RhythmTypes.RIGHT_HAND:
             self.rhythm_pattern = random.choice(self.rhythms_right)
-            print("Chosen rhythm: " + self.rhythm_pattern.__name__)
         else:
             raise AttributeError("RhythmGenerator does not accept this rhythm_type")
 
