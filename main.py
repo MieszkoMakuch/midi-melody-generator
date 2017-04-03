@@ -4,8 +4,9 @@ from melody_generator import MelodyGenerator
 if __name__ == '__main__':
     args = parse_arguments()
     midi = MelodyGenerator(file_dest=args.file_dest, mood=args.mood,
-                           speed=args.speed, instrument=args.instrumentName)
+                           speed=args.speed, instrument=args.instrumentName, multiply_length=args.length)
     midi.generate_midi_melody()
+    midi.print_properties()
 
 # TODO parametrize: octave_shift, melody length.
 # TODO Not specified parameters should be chosen randomly (relates to MelodyGenerator)
