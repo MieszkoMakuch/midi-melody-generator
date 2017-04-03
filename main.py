@@ -7,6 +7,3 @@ if __name__ == '__main__':
                            speed=args.speed, instrument=args.instrumentName, multiply_length=args.length)
     midi.generate_midi_melody()
     midi.print_properties()
-
-# TODO parametrize: octave_shift, melody length.
-# TODO Not specified parameters should be chosen randomly (relates to MelodyGenerator)
