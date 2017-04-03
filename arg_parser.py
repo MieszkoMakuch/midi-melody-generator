@@ -18,6 +18,8 @@ def parse_arguments():
                         help="Choose mood of the melody")
     parser.add_argument("-s", "--speed", metavar="", default=None,
                         help="Choose speed of the melody", choices=speed_choices)
+    parser.add_argument("-l", "--length", metavar="", type=int, choices=range(1, 60), default=None,
+                        help="Choose how many times the chord sequence will be repeated")
 
     # Instrument may be specified either by its name or by its value (MIDI Program Change or "PC#")
     instrument = parser.add_mutually_exclusive_group()
