@@ -2,14 +2,14 @@ from enum import Enum, IntEnum
 
 
 class MelodyProperties:
-    """Melody which will be generated"""
+    """Class containing melody properties such as: Speed, Mood, Instrument"""
 
     class Moods(Enum):
         HAPPY = 'happy'
         SAD = 'sad'
-        NOT_SPECIFIED = 'not_specified'
 
     class Speeds(Enum):
+        # speed relates to MIDI tempo parameter
         SLOW = 90
         MEDIUM = 108
         FAST = 140

@@ -4,6 +4,8 @@ from melody_properties import MelodyProperties
 
 
 def parse_arguments():
+    """Function responsible for parsing arguments"""
+
     mood_choices = [x.name for x in MelodyProperties.Moods]
     speed_choices = [x.name for x in MelodyProperties.Speeds]
     instrument_name_choices = [x.name for x in MelodyProperties.Instruments]
@@ -17,6 +19,7 @@ def parse_arguments():
     parser.add_argument("-s", "--speed", metavar="", default=None,
                         help="Choose speed of the melody", choices=speed_choices)
 
+    # Instrument may be specified either by its name or by its value (MIDI Program Change or "PC#")
     instrument = parser.add_mutually_exclusive_group()
     instrument.add_argument("-in", "--instrumentName", metavar="", default=None,
                             help="Choose name of the instrument", choices=instrument_name_choices)
