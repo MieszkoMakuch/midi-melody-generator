@@ -34,7 +34,7 @@ class MelodyGenerator:
             self.instrument = MelodyProperties.Instruments[instrument]
 
         if file_dest is None:
-            self.file_dest = "midi/melodyMG.mid"
+            self.file_dest = "melody.mid"
         else:
             self.file_dest = file_dest
 

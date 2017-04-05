@@ -13,7 +13,7 @@ def parse_arguments():
 
     parser = argparse.ArgumentParser(description="Generate narcotic MIDI melody")
     parser.add_argument("-d", "--destination", dest="file_dest", metavar="", default=None,
-                        help="Choose MIDI file destination (default \"midi/melody.mid\")")
+                        help="Choose MIDI file destination (default \"melody.mid\")")
     parser.add_argument("-m", "--mood", metavar="", choices=mood_choices, default=None,
                         help="Choose mood of the melody")
     parser.add_argument("-s", "--speed", metavar="", default=None,
