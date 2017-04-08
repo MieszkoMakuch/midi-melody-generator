@@ -74,13 +74,19 @@ class MelodyGenerator:
         midi.write(self.file_dest)
 
     def print_properties(self):
-        print("Mood: \t\t\t\t%s" % MelodyProperties.Moods(self.mood).name)
-        print("Octave shift: \t\t%i" % self.octave_shift)
-        print("Length multiply: \t%i" % self.multiply_length)
-        print("Instrument: \t\t%s" % MelodyProperties.Instruments(self.instrument).name)
-        print("Left hand rhythm: \t%s" % self.left_hand_rhythm.rhythm_pattern.__name__)
-        print("Left hand rhythm: \t%s" % self.right_hand_rhythm.rhythm_pattern.__name__)
-        print("Chord sequence: \t%s" % self.chord_seq.verbose)
+        divider = "\n###############################################################\n"
+        print(divider)
+        print("Melody generated successfully!")
+        print("Melody properties: \n")
+        print("\tDestination: \t\t%s" % self.file_dest)
+        print("\tMood: \t\t\t%s" % MelodyProperties.Moods(self.mood).name)
+        print("\tOctave shift: \t\t%i" % self.octave_shift)
+        print("\tLength multiply: \t%i" % self.multiply_length)
+        print("\tInstrument: \t\t%s" % MelodyProperties.Instruments(self.instrument).name)
+        print("\tLeft hand rhythm: \t%s" % self.left_hand_rhythm.rhythm_pattern.__name__)
+        print("\tRight hand rhythm: \t%s" % self.right_hand_rhythm.rhythm_pattern.__name__)
+        print("\tChord sequence: \t%s" % self.chord_seq.verbose)
+        print(divider)
 
 
 class RhythmGenerator:
