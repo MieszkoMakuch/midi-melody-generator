@@ -1,19 +1,17 @@
 # MIDI melody generator
-
-## Introduction
 Program creates chord progression then chooses one of the fundamental rhythms patterns to compose and generate a MIDI file.
 
 ## Usage
-##### Download or clone this repository:
+#### Download or clone this repository:
 ```bash
-	$ git clone https://github.com/MieszkoMakuch/midi-melody-generator
-	$ cd midi-melody-generator
+  $ git clone https://github.com/MieszkoMakuch/midi-melody-generator
+  $ cd midi-melody-generator
 ```
-##### Run main.py using pyton3:
+#### Run main.py using pyton3:
 ```bash
-	$ python3 main.py
+  $ python3 main.py
 ```
-##### Customizing your melody
+#### Customizing your melody
 To customize your melody you can specify the arguments listed below. When the argument is not specified it will be chosen randomly or by default.
 ```bash
   -h, --help            show this help message and exit
@@ -28,9 +26,9 @@ To customize your melody you can specify the arguments listed below. When the ar
                         Choose value of the instrument (0, 1, 2, ..., 127)
 ```
 
-##### Usage example:
+#### Usage example:
 ```bash
-	$ python3 main.py --destination myMelody.mid --mood HAPPY -in AcousticGrandPiano
+  $ python3 main.py --destination myMelody.mid --mood HAPPY -in AcousticGrandPiano
 
 ###############################################################
  Melody has been successfully generated!
@@ -50,7 +48,7 @@ To customize your melody you can specify the arguments listed below. When the ar
 
 ## How does it work?
 
-##### Melody is being composed:
+#### Melody is being composed:
 1. Program chooses scale based on the mood:
 	- major scale for HAPPY mood
     - minor scale for SAD mood
@@ -59,7 +57,7 @@ To customize your melody you can specify the arguments listed below. When the ar
 
 3. Program chooses one of the fundamental rhythm patterns for left and right hand and applies generated chord progression to this rhythms. More about rhythm patterns: https://www.youtube.com/watch?v=X1coZlJRrx8
 
-##### MIDI file is being generated:
+#### MIDI file is being generated:
 Slightly modified version of pyknon library (https://github.com/kroger/pyknon) is used to generate and save a MIDI file.
 
 ## Compatibility
