@@ -76,7 +76,7 @@ class MelodyGenerator:
     def print_properties(self):
         divider = "\n###############################################################\n"
         print(divider)
-        print("Melody generated successfully!")
+        print("Melody has been successfully generated!")
         print("Melody properties: \n")
         print("\tDestination: \t\t%s" % self.file_dest)
         print("\tMood: \t\t\t%s" % MelodyProperties.Moods(self.mood).name)
