@@ -50,10 +50,9 @@ To customize your melody you can specify the arguments listed below. When the ar
 
 #### Melody is being composed:
 1. Program chooses scale based on the mood:
-	- major scale for HAPPY mood
+    - major scale for HAPPY mood
     - minor scale for SAD mood
-2. Program creates chord progression based on one of the formula I \_ \_ IV or V
-	I \_ \_ IV or V means: first chord in chord progression is always I, last chord in chord progression is either IV or V (cadence chords), two chords between them are chosen randomly. More about chord progression: https://www.youtube.com/watch?v=lY_llceEGFI
+2. Program creates chord progression based on one of the formula I \_ \_ IV or V which means: first chord in chord progression is always I, last chord in chord progression is either IV or V (cadence chords), two chords between them are chosen randomly. More about chord progression: https://www.youtube.com/watch?v=lY_llceEGFI
 
 3. Program chooses one of the fundamental rhythm patterns for left and right hand and applies generated chord progression to this rhythms. More about rhythm patterns: https://www.youtube.com/watch?v=X1coZlJRrx8
 
